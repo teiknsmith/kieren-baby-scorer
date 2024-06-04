@@ -12,7 +12,11 @@ winner=st.empty()
 "Enter the information below to update the winner"
 
 date_answer = st.date_input("Date of the birth")
-time_answer = st.slider("Time of the birth", min_value=time(0,0), max_value=time(23,59), step=timedelta(minutes=1), format="h:mm a")
+with st.container():
+    "Time of the birth"
+    hour = st.slider("Hour", min_value=time(0,0), max_value=time(23,00), step=timedelta(hours=1), format="ha")
+    minute = st.slider("Minute", min_value=time(0,0), max_value=time(0,59), step=timedelta(minutes=1), format="mm")
+time_answer = hour.hour*60 + minute.minute
 with st.container():
     "Weight of the baby"
     lbs = st.number_input("pounds", min_value=0, step=1)
@@ -108,8 +112,6 @@ for name, answers in guesses.items():
     scores[name] += score
 
 # Time of day
-time_answer = time_answer.hour*60 + time_answer.minute
-
 time_guesses = []
 for name, answers in guesses.items():
     time_str = answers[5]
