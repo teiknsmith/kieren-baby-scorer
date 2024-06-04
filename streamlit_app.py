@@ -18,7 +18,7 @@ with st.container():
     lbs = st.number_input("pounds", min_value=0, step=1)
     oz = st.number_input("ounces", min_value=0, max_value=15, step=1)
 weight_answer = oz + 16*lbs
-length_answer = st.number_input("Length of the baby in inches", min_value=0, step=1)
+length_answer = st.number_input("Length of the baby in inches", min_value=0.0)
 
 
 
